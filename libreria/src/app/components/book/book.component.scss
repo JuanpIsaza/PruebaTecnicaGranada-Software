@@ -21,6 +21,42 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
       }
+
+      &-controls {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .cont-search {
+          width: 100%;
+          max-width: 800px;
+          align-items: center;
+          display: flex;
+          justify-content: space-around;
+          margin-right: 20px;
+
+          label {
+            color: $white;
+            font-size: 1.7rem;
+          }
+          .cont-input{
+            width: 100%;
+            .search{
+              width: 100%;
+              border-radius: 20px;
+              background-image: url('/assets/images/lupa.png');
+              background-position: 98%;
+              background-size: 30px 30px;
+              background-repeat: no-repeat;
+              box-sizing: border-box;
+              padding: 0 15px;
+              border: none;
+              height: 40px;          
+            }
+          }
+        }
+      }
     }
 
     &-form {
@@ -90,6 +126,90 @@
             background: $red;
             margin-bottom: 50px;
             border-radius: 20px;
+          }
+        }
+      }
+    }
+
+    &-new {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      color: $grey;
+      margin-top: 50px;
+      padding: 0 2%;
+
+      .form {
+        width: 640px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+
+        &-group {
+          margin: 20px 0;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          width: 100%;
+
+          &.extra {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: start;
+            margin: 0 40px 0 45px;
+
+            .form-group-controls {
+              display: flex;
+              justify-content: center;
+
+              label {
+                width: 50%;
+              }
+
+              .form-control {
+                margin: 0;
+                width: 50%;
+              }
+            }
+
+            .invalid-feedback {
+              margin-left: 138px;
+            }
+
+          }
+
+          &.function {
+            justify-content: flex-end;
+
+            .btn {
+              margin-right: 40px;
+              margin-top: 0;
+            }
+          }
+
+          &-controls {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+
+            .cont-img {
+              border: 2px solid $grey;
+              border-radius: 5px;
+              width: 200px;
+              height: 300px;
+              margin-left: 70px;
+            }
+
+            .excerpt {
+              height: 90px;
+              resize: none;
+            }
+          }
+
+          .invalid-feedback {
+            margin-left: 184px;
           }
         }
       }

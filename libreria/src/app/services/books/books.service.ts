@@ -29,6 +29,16 @@ export class BooksService {
       );
   }
 
+
+  createBook(book): Observable<Book> {
+    console.log(book);
+    return this.http.post<Book>(this.mockUrl, JSON.stringify(book), this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
   errorHandl(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

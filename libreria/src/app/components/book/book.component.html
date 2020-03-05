@@ -1,19 +1,19 @@
 <section class="book">
   <div class="cont-bar">
     <div class="logo"></div>
-    <div class="cont-controls">
+    <div class="cont-bar-controls">
       <div class="cont-search">
         <label>Título</label>
-        <div>
+        <div class="cont-input">
           <input type="text" class="form-control search" />
         </div>
       </div>
-      <div class="cont-new">
-        <button class="btn btn-secundary">Crear Nuevo</button>
+      <div class="cont-new-book">
+        <button class="btn btn-secundary" (click)="doNewBook()">Crear Nuevo</button>
       </div>
     </div>
   </div>
-  <div class="cont-form">
+  <div *ngIf="!newBook" class="cont-form">
     <div class="cont-form-data">
       <div *ngFor="let book of listbook | paginate: { itemsPerPage: 12, currentPage: p }" (click)="detailBook(book)"
         class="item-book">
@@ -29,5 +29,79 @@
       <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente">
       </pagination-controls>
     </div>
+  </div>
+  <div *ngIf="newBook" class="cont-new">
+    <form class="form" [formGroup]="newBookForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <div class="form-group-controls">
+          <div class="cont-img">
+            <img [src]="imgURL" class="img" width="200" height="300" *ngIf="imgURL">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group-controls">
+          <label>Cargar imagen</label>
+          <input #file type="file" class="form-control btn-select" accept='image/*'
+            (change)="preview(file.files)" />
+          <span class="invalid-feedback" *ngIf="message">{{message}}</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group-controls">
+          <label>*Título</label>
+          <input type="text" formControlName="title" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+        </div>
+        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+          <div *ngIf="f.title.errors.required">Título requerido.</div>
+        </div>
+      </div>
+
+      <div class="form-group extra">
+        <div class="form-group">
+          <div class="form-group-controls">
+            <label>*Fecha</label>
+            <input type="date" formControlName="publishDate" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.publishDate.errors }" />
+          </div>
+          <div *ngIf="submitted && f.publishDate.errors" class="invalid-feedback">
+            <div *ngIf="f.publishDate.errors.required">Fecha requerida.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group-controls">
+            <label>N° Paginas</label>
+            <input type="text" formControlName="pageCount" class="form-control" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group-controls">
+          <label>*Descripcion</label>
+          <input type="text" formControlName="description" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+        </div>
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">Descripcion requerido.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group-controls">
+          <label>Extracto</label>
+          <textarea type="text" formControlName="excerpt" class="form-control excerpt" ></textarea>
+        </div>
+      </div>
+
+      <div class="form-group function">
+        <button class="btn btn-primary">Guardar</button>
+      </div>
+
+    </form>
   </div>
 </section>
