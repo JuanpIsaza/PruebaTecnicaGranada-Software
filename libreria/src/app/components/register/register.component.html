@@ -1,3 +1,47 @@
-<p>
-  register works!
-</p>
+<section class="registro">
+  <div class="cont-bar">
+    <div class="logo"></div>
+  </div>
+  <div class="cont-form">
+    <h1>Registrate</h1>
+    <div class="cont-form-data">
+      <form class="form" [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <div class="form-group-controls">
+            <label>Nombre</label>
+            <input type="text" formControlName="nombre" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+          </div>
+          <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">Nombre requerido.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group-controls">
+            <label>Usuario</label>
+            <input type="text" formControlName="user" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.user.errors }" />
+          </div>
+          <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+            <div *ngIf="f.user.errors.required">Usuario requerido.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group-controls">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          </div>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Contraseña requerida.</div>
+            <div *ngIf="f.password.errors.minlength">La contraseña debe contener al menos 6 caracteres.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary">Registrate</button>
+          <a routerLink="/login" class="btn btn-secundary">Ingreso</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,3 +1,33 @@
-<p>
-  book works!
-</p>
+<section class="book">
+  <div class="cont-bar">
+    <div class="logo"></div>
+    <div class="cont-controls">
+      <div class="cont-search">
+        <label>Título</label>
+        <div>
+          <input type="text" class="form-control search" />
+        </div>
+      </div>
+      <div class="cont-new">
+        <button class="btn btn-secundary">Crear Nuevo</button>
+      </div>
+    </div>
+  </div>
+  <div class="cont-form">
+    <div class="cont-form-data">
+      <div *ngFor="let book of listbook | paginate: { itemsPerPage: 12, currentPage: p }" (click)="detailBook(book)"
+        class="item-book">
+        <div class="image">
+          <img src="https://i.picsum.photos/id/{{book.ID}}/200/300.jpg" alt="Portada del libro">
+          <div class="description">{{book.Description}}</div>
+        </div>
+        <div class="text">
+          <h3>{{book.Title}}</h3>
+          <p>{{book.PublishDate | date: 'yyyy'}}</p>
+        </div>
+      </div>
+      <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente">
+      </pagination-controls>
+    </div>
+  </div>
+</section>

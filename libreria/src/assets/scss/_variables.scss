@@ -1,0 +1,28 @@
+/* Importacion de fuentes */
+@import '../scss/fonts';
+
+/* Variables de color */
+
+$black-text: #292d3c;
+$white: #fffdfe;
+$red: #f60442;
+$red-text: #f93f6f;
+$grey: #afa7a8;
+$dark-grey: #707070;
+
+// primary font
+$primary_font: 'Filson';
+
+// font-weight
+$thin:100;
+$light:300;
+$regular:400;
+$bold:700;
+$black:900;
+
+// Font size
+$font-xs:12px;
+$font-sm: 14px;
+$primary-fs: 1rem;
+$font-md: 18px;
+$font-lg: 30px;

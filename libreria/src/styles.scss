@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importacion de variables */
+@import 'assets/scss/variables.scss';
+
+* {
+  font-family: $primary_font;
+}
+
+body {
+  font-family: $primary_font;
+  font-size: $primary-fs;
+  font-weight: $regular;
+  margin: 0;
+}
+
+.btn {
+  width: 150px;
+  height: 40px;
+  border: 2px solid $grey;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover {
+    transition: .2;
+    border: 3px solid $grey;
+    font-weight: bold;
+  }
+
+  &-primary {
+    background-color: rgb(119, 0, 30);
+    background: linear-gradient(90deg, rgba(119, 0, 30, 1) 0%, rgba(179, 0, 54, 1) 35%, rgba(255, 0, 0, 1) 100%);
+    color: $white;
+  }
+
+  &-secundary {
+    background-color: $white;
+    margin-left: 0;
+    color: $red;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+  }
+}
+
+
+label {
+  font-size: 1.3rem;
+  width: 30%;
+  text-align: right;
+  color: $red;
+  padding-right: 10px;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid $grey;
+  color: $black-text;
+  width: 70%;
+  height: 30px;
+  font-size: 1rem;
+  margin-right: 40px;
+  padding: 0 5px;
+}
+
+.invalid-feedback {
+  width: 100%;
+  color: $red-text;
+  margin-left: 130px;
+  margin-top: 5px;
+}
